@@ -1,0 +1,350 @@
+/* ==========================================================
+   RecordHub — stylesheet
+   Palette:
+     --ink       #1B2430  (primary text)
+     --slate     #5B6472  (secondary text)
+     --paper     #F5F6F8  (page background)
+     --surface   #FFFFFF  (cards)
+     --teal      #1F6F5C  (brand / primary actions)
+     --teal-dark #16543F
+     --amber     #C88A2E  (admin accent)
+     --coral     #C1443A  (danger / delete)
+     --line      #E4E7EB  (borders)
+   Fonts: "Sora" for headings, "Inter" for body text
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --ink: #1B2430;
+    --slate: #5B6472;
+    --paper: #F5F6F8;
+    --surface: #FFFFFF;
+    --teal: #1F6F5C;
+    --teal-dark: #16543F;
+    --amber: #C88A2E;
+    --coral: #C1443A;
+    --line: #E4E7EB;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: 'Sora', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+a { color: var(--teal); text-decoration: none; }
+
+/* ---------------- Layout ---------------- */
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+}
+
+.page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.page-head h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.page-subtitle {
+    color: var(--slate);
+    font-size: 14.5px;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+}
+
+/* ---------------- Navbar ---------------- */
+.navbar {
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.nav-brand {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 6px;
+}
+
+.nav-links a {
+    color: #C7CCD4;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-links a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-links a.active { background: var(--teal); color: #fff; }
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.nav-username { color: #C7CCD4; }
+
+.logout-link {
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 13.5px;
+    transition: background 0.15s ease;
+}
+.logout-link:hover { background: rgba(255,255,255,0.1); }
+
+/* ---------------- Badges ---------------- */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+.badge-admin { background: rgba(200,138,46,0.15); color: var(--amber); }
+.badge-user  { background: rgba(31,111,92,0.12); color: var(--teal); }
+
+/* ---------------- Buttons ---------------- */
+.btn {
+    display: inline-block;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.08s ease, background 0.15s ease, box-shadow 0.15s ease;
+    text-align: center;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary { background: var(--teal); color: #fff; }
+.btn-primary:hover { background: var(--teal-dark); }
+
+.btn-secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
+.btn-secondary:hover { background: #EFF1F3; }
+
+.btn-danger { background: #FBEAE8; color: var(--coral); }
+.btn-danger:hover { background: #F6D9D6; }
+
+.btn-small { padding: 6px 12px; font-size: 13px; border-radius: 6px; }
+.btn-full { width: 100%; }
+
+/* ---------------- Cards / Forms ---------------- */
+.form-card, .table-wrapper {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.card-title {
+    font-size: 17px;
+    margin-bottom: 16px;
+}
+
+.form-group { margin-bottom: 18px; }
+
+.form-group label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--ink);
+}
+
+.field-hint { font-size: 12.5px; color: var(--slate); display: inline-block; margin-top: 4px; }
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    color: var(--ink);
+    background: var(--surface);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(31,111,92,0.14);
+}
+
+textarea { resize: vertical; }
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+/* ---------------- Alerts ---------------- */
+.alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+.alert-error   { background: #FBEAE8; color: #8C2E26; border-color: #F2C6C1; }
+.alert-success { background: #E9F5F0; color: #16543F; border-color: #C6E6D9; }
+
+/* ---------------- Table ---------------- */
+.table-wrapper { padding: 0; overflow-x: auto; }
+.table-wrapper .card-title { padding: 20px 20px 0; }
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    text-align: left;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--slate);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+}
+
+.data-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+    vertical-align: top;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.actions-col { white-space: nowrap; }
+.actions-col .btn { margin-right: 6px; }
+
+.empty-state {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--slate);
+}
+
+/* ---------------- Auth (login) page ---------------- */
+.auth-body {
+    background: linear-gradient(160deg, #16543F 0%, #1F6F5C 45%, #2A8873 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.auth-wrapper { width: 100%; max-width: 400px; }
+
+.auth-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 40px 36px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+.auth-icon { font-size: 34px; margin-bottom: 6px; }
+
+.auth-card h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.auth-subtitle {
+    color: var(--slate);
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.auth-form { text-align: left; }
+
+.auth-hint {
+    margin-top: 22px;
+    font-size: 12.5px;
+    color: var(--slate);
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    line-height: 1.6;
+}
+
+/* ---------------- Responsive table (stack on mobile) ---------------- */
+@media (max-width: 700px) {
+    .data-table thead { display: none; }
+    .data-table, .data-table tbody, .data-table tr, .data-table td { display: block; width: 100%; }
+    .data-table tr {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        margin: 14px 20px;
+    }
+    .data-table td {
+        border-bottom: 1px solid #F0F1F3;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+    }
+    .data-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--slate);
+        font-size: 12.5px;
+    }
+    .navbar { flex-direction: column; align-items: flex-start; }
+}
